@@ -2,7 +2,7 @@
 ArmNN v21.08 and PyArmNN build steps for x86_64_Linux System
 
 OS : Ubuntu 18.04 <br>
-ArmNN Version : 21.08
+ArmNN Version : 21.08 <br>
 PyArmNN Version : 26.0.0
 
 ## Steps to build ArmNN: 

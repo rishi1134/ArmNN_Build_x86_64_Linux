@@ -1,4 +1,4 @@
-# Armnn_Build_x86_64_Linux
+# ArmNN_Build_x86_64_Linux
 ArmNN v21.08 and PyArmNN build steps for x86_64_Linux System
 
 OS : Ubuntu 18.04 <br>

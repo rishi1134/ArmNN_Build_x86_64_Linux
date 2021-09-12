@@ -97,7 +97,7 @@ make -j4
 Before, proceeding to the next steps, make sure that:
 1) You have Python 3.6+ installed system-side. The package is not compatible with older Python versions.
 2) You have python3.6-dev installed system-side. This contains header files needed to build PyArmNN extension module.
-3) Install SWIG 4.x. Only 3.x version is typically available in Linux package managers, so you will have to build it and install it from sources. It can be downloaded from the SWIG project website or from SWIG GitHub. To install it follow the guide on SWIG GitHub.
+3) Install SWIG 4.x. Only 3.x version is typically available in Linux package managers, so you will have to build it and install it from sources.To install it follow the guide on [SWIG GitHub](https://github.com/swig/swig/wiki/Getting-Started) or [here](https://www.dev2qa.com/how-to-install-swig-on-macos-linux-and-windows/).
 
 ## PyArmNN installation : 
 ### Installing from source package : 

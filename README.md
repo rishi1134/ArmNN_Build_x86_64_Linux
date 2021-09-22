@@ -103,7 +103,7 @@ Run the build :
 make -j4
 ```
 
-### Note : Following the above steps will build ArmNN v21.08 for x86_64_linux system with no CpuAcc, deserializer & tflite support.
+### Note : Following the above steps will build ArmNN v21.08 for x86_64_linux system with no CpuAcc & Deserializer support.
 
 ## Steps to build PyArmNN :
 

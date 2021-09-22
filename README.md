@@ -46,7 +46,7 @@ cd flatbuffers-1.12.0
 rm -f CMakeCache.txt
 mkdir build
 cd build
-cmake .. -DFLATBUFFERS_BUILD_FLATC=1 \
+CXXFLAGS="-fPIC" cmake .. -DFLATBUFFERS_BUILD_FLATC=1 \
      -DCMAKE_INSTALL_PREFIX:PATH=$HOME/armnn-devenv/flatbuffers \
      -DFLATBUFFERS_BUILD_TESTS=0
 make all install
@@ -60,22 +60,35 @@ LD_LIBRARY_PATH=$HOME/armnn-devenv/google/x86_64_pb_install/lib:$LD_LIBRARY_PATH
 $HOME/armnn-devenv/google/x86_64_pb_install/bin/protoc \
 onnx/onnx.proto --proto_path=. --proto_path=../google/x86_64_pb_install/include --cpp_out $HOME/armnn-devenv/onnx
 ```
-8) Compile Arm NN for x86_64:
+8) Building TfLite(v2.3.1):
+```cd $HOME/armnn-devenv
+git clone https://github.com/tensorflow/tensorflow.git
+cd tensorflow/
+git checkout fcc4b966f1265f466e82617020af93670141b009
+cd ..
+mkdir tflite
+cd tflite
+cp ../tensorflow/tensorflow/lite/schema/schema.fbs .
+../flatbuffers-1.12.0/build/flatc -c --gen-object-api --reflect-types --reflect-names schema.fbs
+```
+10) Compile Arm NN for x86_64:
 ```cd $HOME/armnn-devenv/armnn
 mkdir build
 cd build
 ```
 Build configurations :
 ```
-CXX=x86_64-linux-gnu-g++ CC=x86_64-linux-gnu-gcc cmake .. \
+CXX=x86_64-linux-gnu-g++ CC=x86_64-linux-gnu-gcc CXXFLAGS="-fPIC" cmake .. \
 -DARMCOMPUTE_ROOT=$HOME/armnn-devenv/ComputeLibrary \
 -DARMCOMPUTE_BUILD_DIR=$HOME/armnn-devenv/ComputeLibrary/build/ \
 -DARMCOMPUTECL=1 -DARMNNREF=1 \
 -DONNX_GENERATED_SOURCES=$HOME/armnn-devenv/onnx \
 -DBUILD_ONNX_PARSER=1 \
+-DBUILD_TF_LITE_PARSER=1 \
 -DBUILD_ARMNN_SERIALIZER=1 \
 -DBUILD_PYTHON_SRC=1 \
 -DBUILD_PYTHON_WHL=1 \
+-DTF_LITE_GENERATED_PATH=$HOME/armnn-devenv/tflite \
 -DFLATBUFFERS_ROOT=$HOME/armnn-devenv/flatbuffers \
 -DFLATC_DIR=$HOME/armnn-devenv/flatbuffers-1.12.0/build \
 -DPROTOBUF_ROOT=$HOME/armnn-devenv/google/x86_64_pb_install \

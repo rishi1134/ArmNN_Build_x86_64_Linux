@@ -71,7 +71,7 @@ cd tflite
 cp ../tensorflow/tensorflow/lite/schema/schema.fbs .
 ../flatbuffers-1.12.0/build/flatc -c --gen-object-api --reflect-types --reflect-names schema.fbs
 ```
-10) Compile Arm NN for x86_64:
+9) Compile Arm NN for x86_64:
 ```cd $HOME/armnn-devenv/armnn
 mkdir build
 cd build
@@ -122,7 +122,7 @@ export  ARMNN_INCLUDE=$HOME/armnn-devenv/armnn/include:$HOME/armnn-devenv/armnn/
 ```
 pip3 install pyarmnn-26.0.0.tar.gz
 ```
-### You can now verify that PyArmNN library is installed and check PyArmNN version using :
+### You can now verify that PyArmNN library is installed and check PyArmNN version using:
 ```
 pip3 show pyarmnn
 ```
